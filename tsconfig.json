@@ -1,0 +1,13 @@
+{
+  "compileOnSave": false,
+  "extends": "@tsconfig/node14/tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "sourceMap": true
+  }
+}

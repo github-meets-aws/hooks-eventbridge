@@ -1,2 +1,3 @@
-# github-to-sns
-Bridge for Github events to be streamed to SNS.
+# GitHub WebHooks AWS EventBridge
+
+EventBridge configuration to get events from the GitHub Webhooks.
