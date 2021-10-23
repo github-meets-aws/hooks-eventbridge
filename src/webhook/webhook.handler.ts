@@ -26,8 +26,8 @@ export const handler: APIGatewayProxyHandlerV2 = async function (event) {
 
   try {
     verificationRequest = new APIGatewayAdapter(event);
-  } catch (e: any) {
-    logger.error(e);
+  } catch (e) {
+    logger.error(e as Error);
     return { statusCode: 400, body: JSON.stringify({ message: 'Invalid Webhook Request' }) };
   }
 
@@ -38,8 +38,8 @@ export const handler: APIGatewayProxyHandlerV2 = async function (event) {
     }
 
     await eventEmitterPort.emit({ name: verificationRequest.eventName, payload: verificationRequest.payload });
-  } catch (e: any) {
-    logger.error(e);
+  } catch (e) {
+    logger.error(e as Error);
     return { statusCode: 500, body: JSON.stringify({ message: 'Server Error' }) };
   }
 
