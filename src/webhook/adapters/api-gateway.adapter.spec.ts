@@ -10,7 +10,7 @@ describe('happy flow', () => {
   const signature = 'signature';
   const headers = { 'X-Hub-Signature-256': signature };
 
-  const testFn = () => adapter = new APIGatewayAdapter({ body, headers } as unknown as APIGatewayProxyEventV2);
+  const testFn = () => (adapter = new APIGatewayAdapter({ body, headers } as unknown as APIGatewayProxyEventV2));
 
   test('should not throw', () => expect(testFn).not.toThrow());
   test('should correctly determine the payload', () => expect(adapter.payload).toBe(body));

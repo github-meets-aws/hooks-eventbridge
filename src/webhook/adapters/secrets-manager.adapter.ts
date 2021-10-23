@@ -1,7 +1,7 @@
 import {
   GetSecretValueCommand,
   GetSecretValueCommandOutput,
-  SecretsManagerClient
+  SecretsManagerClient,
 } from '@aws-sdk/client-secrets-manager';
 
 import { SecretPort } from '../ports';
@@ -16,16 +16,16 @@ export class SecretsManagerAdapter implements SecretPort<string> {
   constructor(
     private readonly secretsManagerClient: SecretsManagerClient,
     private readonly props: SecretProviderProps
-  ) {
-  }
+  ) {}
 
   async checkNewVersion(): Promise<boolean> {
     const newVersion = await this.secretsManagerClient.send(
       new GetSecretValueCommand({ SecretId: this.props.secretId })
     );
 
-    if (newVersion.VersionId === this.lastRetrievedSecret?.VersionId)
+    if (newVersion.VersionId === this.lastRetrievedSecret?.VersionId) {
       return false;
+    }
 
     this.lastRetrievedSecret = newVersion;
     return true;
